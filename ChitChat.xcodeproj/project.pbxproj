@@ -10,9 +10,22 @@
 		E36B7EA0300AE42F006742B3 /* ChitChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChitChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E36B7EB4300AFF54006742B3 /* Exceptions for "ChitChat" folder in "ChitChat" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E36B7E9F300AE42F006742B3 /* ChitChat */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E36B7EA2300AE42F006742B3 /* ChitChat */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E36B7EB4300AFF54006742B3 /* Exceptions for "ChitChat" folder in "ChitChat" target */,
+			);
 			path = ChitChat;
 			sourceTree = "<group>";
 		};
@@ -256,6 +269,8 @@
 				DEVELOPMENT_TEAM = 9RBZBHFC4T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChitChat/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "ChitChat utilitzes peer-to-peer connections via iPhone's WiFi interface to discover and message nearby users, even without an internet connection.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,6 +303,8 @@
 				DEVELOPMENT_TEAM = 9RBZBHFC4T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChitChat/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "ChitChat utilitzes peer-to-peer connections via iPhone's WiFi interface to discover and message nearby users, even without an internet connection.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

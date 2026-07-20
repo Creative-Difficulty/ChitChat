@@ -7,55 +7,39 @@
 
 import SwiftUI
 import SwiftData
+import Network
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    
+    @StateObject private var p2pWifi = WiFiMessageProtocol()
+    @State private var currentDraftMessage = ""
+        
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
+        VStack {
+            List(p2pWifi.log.indices, id: \.self) { Text(p2pWifi.log[$0]) }
+            
+            HStack {
+                TextField("Message", text: $currentDraftMessage)
+                Button {
+                    p2pWifi.send(text: currentDraftMessage); currentDraftMessage = ""
+                } label: {
+                    Image(systemName: "arrow.up")
+                        .font(.system(size: 18, weight: .semibold))
+                        .frame(width: 44, height: 44)
                 }
-                .onDelete(perform: deleteItems)
+                .disabled(currentDraftMessage.isEmpty)
+                .buttonBorderShape(.circle)
+                .backgroundStyle(Color.blue)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
+            .padding()
+            
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+        .onAppear { p2pWifi.start() }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
