@@ -7,6 +7,11 @@ struct Message: Identifiable, Equatable {
     let isFromMe: Bool
 }
 
+struct InConversationData {
+    let messageBoxFocused:  Bool
+    let chatBelongsToContact: Contact
+}
+
 struct MessagesView: View {
     @State private var messages: [Message] = [
         Message(text: "Hey! Are we still on for lunch tomorrow?", isFromMe: false),
@@ -20,14 +25,14 @@ struct MessagesView: View {
     @State private var networkMonitor = NetworkMonitor()
     @FocusState private var inputFocused: Bool;
     
-
+    @EnvironmentObject var conversationState: InConversationData
+    
     var body: some View {
         VStack(spacing: 0) {
             TopBar(contactFullName: "Example Contact", missedMessagesCount: 3, networkMonitor: networkMonitor)
             // Message list
             
-            inputBar
-        }
+            InputBar()        }
     }
 
     // MARK: Top bar
