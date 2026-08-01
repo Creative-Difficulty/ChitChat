@@ -1,16 +1,17 @@
 //
-//  ContactStruct.swift
+//  Structs.swift
 //  ChitChat
 //
 //  Created by Alexander Leschanz on 26.07.26.
 //
 
 import Foundation
+import SwiftData
+
+typealias PublicKeyString = String
 
 struct Contact {
-    // TODO: Impl, also can we somehow bake the username into each user's key to deduplicate without using a central server?
-    // Generated key with a username handle baked in?
-    let userPublicKey: String?
+    let userPublicKey: PublicKeyString
     
     // E.g. "Jane Appleseed"
     // (First, Last)
@@ -18,8 +19,21 @@ struct Contact {
     let displayName: String
     
     // Users can enable a notification to display nearby online users who may be chatting with other users and discover them to start chatting, hence the `trusted` field
-    let trusted: Bool
+    let isKnown: Bool
     let isNear: Bool
+}
+
+@Model
+final class Message: Identifiable, Equatable {
+    @Attribute(.unique) var id = UUID()
+    
+    var content: String
+    var sentByPubKey: PublicKeyString
+    
+    init(text: String, sentByPubKey: PublicKeyString) {
+        self.content = text
+        self.sentByPubKey = sentByPubKey
+    }
 }
 
 // ------------------
@@ -35,6 +49,7 @@ enum NetworkStates {
     // Fallback
     case bluetooth
     
-    
+    // Completely disconnected from everything
     case disabled
 }
+

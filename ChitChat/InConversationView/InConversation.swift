@@ -1,12 +1,6 @@
 import SwiftUI
 import Network
 
-struct Message: Identifiable, Equatable {
-    let id = UUID()
-    let text: String
-    let isFromMe: Bool
-}
-
 struct InConversationData {
     let messageBoxFocused:  Bool
     let chatBelongsToContact: Contact
