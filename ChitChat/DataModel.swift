@@ -41,7 +41,7 @@ enum NetworkStates {
     // WiFi
     case wifi
     
-    // Interesting thing for the user, should be the same as wifi for impl
+    // Interesting distinction for the user, the same as wifi for impl
     case awdl
     
     // Fallback
