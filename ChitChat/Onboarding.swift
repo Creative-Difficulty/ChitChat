@@ -14,8 +14,8 @@ struct Onboarding: View {
         VStack {
             Text("View Text")
         }
-//        .fullScreenCover(isPresented: $showOnboarding) {s^heetOnboarding(showOnboarding: $showOnboarding)}
-        .sheet(isPresented: $showOnboarding) {sheetOnboarding(showOnboarding: $showOnboarding)}.interactiveDismissDisabled()
+        .sheet(isPresented: $showOnboarding) {StocksOnboardingReference()}
+//        .sheet(isPresented: $showOnboarding) {sheetOnboarding(showOnboarding: $showOnboarding)}.interactiveDismissDisabled()
     }
 }
 

@@ -12,11 +12,12 @@ import Network
 struct ContentView: View {
     
     var body: some View {
-        VStack {
-            Text("ChitChat Test 1")
-            .padding()
-            
-        }
+//        VStack {
+//            Text("ChitChat Test 1")
+//            .padding()
+//            
+//        }
+        StocksOnboardingReference()
         .onAppear { start() }
     }
 }

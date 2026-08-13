@@ -6,21 +6,23 @@ import SwiftUI
 struct StocksOnboardingReference: View {
     var body: some View {
         VStack(spacing: 0) {
-            ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     // Title
+                    Spacer()
                     VStack(alignment: .center, spacing: 0) {
                         Text("Welcome to")
-                            .font(.system(size: 40, weight: .bold))
-                            .foregroundStyle(.white)
+                            .font(.system(size: 44, weight: .bold))
                         Text("Stocks")
-                            .font(.system(size: 40, weight: .bold))
+                            .font(.system(size: 44, weight: .bold))
                             .foregroundStyle(.blue)
                     }
                     .frame(maxWidth: .infinity)
                     .multilineTextAlignment(.center)
-                    .padding(.top, 60)
-                    .padding(.bottom, 56)
+                    
+                    Spacer()
+                    Spacer()
+   
+
 
                     // Feature rows
                     VStack(alignment: .leading, spacing: 32) {
@@ -30,7 +32,7 @@ struct StocksOnboardingReference: View {
                             description: "View stock quotes, interactive charts, and other financial metrics."
                         )
                         FeatureRow(
-                            systemImage: "newspaper.fill",
+                            systemImage: "newspaper",
                             title: "Business News",
                             description: "Read the latest stories driving the market."
                         )
@@ -40,11 +42,22 @@ struct StocksOnboardingReference: View {
                             description: "Use iCloud to view your symbols and watchlists across your Apple devices."
                         )
                     }
-                    .padding(.horizontal, 28)
                 }
-            }
+            
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            
 
-            // Bottom-pinned privacy blurb + CTA
             VStack(alignment: .leading, spacing: 16) {
                 VStack(alignment: .leading, spacing: 12) {
                     Image(systemName: "person.2.fill")
@@ -53,7 +66,8 @@ struct StocksOnboardingReference: View {
                     (
                         Text("Apple collects your activity in Stocks, which is not associated with your Apple Account, in order to improve and personalize Stocks. Your Apple Account may be used to check for news subscriptions, where available, so you can access them in Stocks. \(Text("See how your data is managed…").foregroundStyle(.blue))")
                     )
-                    .font(.footnote)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                 }
 
                 Button {
@@ -66,13 +80,10 @@ struct StocksOnboardingReference: View {
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.capsule)
                 .controlSize(.large)
-                .padding(.horizontal, 24)
             }
-            .padding(.horizontal, 28)
-            .padding(.bottom, 12)
         }
-        .background(Color.black)
-        .preferredColorScheme(.dark)
+//        .preferredColorScheme(.dark)
+        .padding(.horizontal, 48)
     }
 }
 
@@ -84,14 +95,13 @@ private struct FeatureRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: systemImage)
-                .font(.system(size: 34))
+                .font(.system(size: 40))
                 .foregroundStyle(.blue)
                 .frame(width: 44)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.title3.weight(.semibold))
-                    .foregroundStyle(.white)
                 Text(description)
                     .font(.body)
                     .foregroundStyle(.secondary)
